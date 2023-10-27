@@ -10,38 +10,38 @@
         default = both;
         both = {
           description = "nixos-flake template for both Linux and macOS in same flake";
-          path = tmplPath ./examples/both;
+          path = tmplPath ./systems/both;
         };
         linux = {
           description = "nixos-flake template for NixOS configuration.nix";
-          path = tmplPath ./examples/linux;
+          path = tmplPath ./systems/linux;
         };
         macos = {
           description = "nixos-flake template for nix-darwin configuration";
-          path = tmplPath ./examples/macos;
+          path = tmplPath ./systems/macos;
         };
         home = {
           description = "nixos-flake template for home-manager configuration";
-          path = tmplPath ./examples/home;
+          path = tmplPath ./systems/home;
         };
       };
 
     nixci = let overrideInputs = { nixos-flake = ./.; }; in {
       macos = {
         inherit overrideInputs;
-        dir = "examples/macos";
+        dir = "systems/macos";
       };
       home = {
         inherit overrideInputs;
-        dir = "examples/home";
+        dir = "systems/home";
       };
       linux = {
         inherit overrideInputs;
-        dir = "examples/linux";
+        dir = "systems/linux";
       };
       both = {
         inherit overrideInputs;
-        dir = "examples/both";
+        dir = "systems/both";
       };
     };
   };
